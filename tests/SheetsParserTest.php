@@ -1,13 +1,13 @@
 <?php
 
-namespace AnourValar\Office\Tests;
+namespace EmizorIpx\OfficePhp74\Tests;
 
 class SheetsParserTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \AnourValar\Office\Sheets\Parser
+     * @var \EmizorIpx\OfficePhp74\Sheets\Parser
      */
-    protected \AnourValar\Office\Sheets\Parser $service;
+    protected \EmizorIpx\OfficePhp74\Sheets\Parser $service;
 
     /**
      * @see \PHPUnit\Framework\TestCase
@@ -16,7 +16,7 @@ class SheetsParserTest extends \PHPUnit\Framework\TestCase
      */
     protected function setUp(): void
     {
-        $this->service = new \AnourValar\Office\Sheets\Parser();
+        $this->service = new \EmizorIpx\OfficePhp74\Sheets\Parser();
     }
 
     /**

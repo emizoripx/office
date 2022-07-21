@@ -1,25 +1,25 @@
 <?php
 
-namespace AnourValar\Office;
+namespace EmizorIpx\OfficePhp74;
 
 class Mixer
 {
     /**
      * Mix generated documents
      *
-     * @param \AnourValar\Office\Generated[\AnourValar\Office\Drivers\MixInterface] $generated
+     * @param \EmizorIpx\OfficePhp74\Generated[\EmizorIpx\OfficePhp74\Drivers\MixInterface] $generated
      * @throws \LogicException
-     * @return \AnourValar\Office\Generated
+     * @return \EmizorIpx\OfficePhp74\Generated
      */
     public function __invoke(...$generated): Generated
     {
         $referenceDriver = array_shift($generated);
-        if (! $referenceDriver instanceof \AnourValar\Office\Generated) {
+        if (! $referenceDriver instanceof \EmizorIpx\OfficePhp74\Generated) {
             throw new \LogicException('Input data must be instanceof Generated');
         }
 
         $referenceDriver = $referenceDriver->driver;
-        if (! $referenceDriver instanceof \AnourValar\Office\Drivers\MixInterface) {
+        if (! $referenceDriver instanceof \EmizorIpx\OfficePhp74\Drivers\MixInterface) {
             throw new \LogicException('Driver must implements MixInterface.');
         }
 
@@ -32,7 +32,7 @@ class Mixer
         }
 
         foreach ($generated as $driver) {
-            if (! $driver instanceof \AnourValar\Office\Generated) {
+            if (! $driver instanceof \EmizorIpx\OfficePhp74\Generated) {
                 throw new \LogicException('Input data must be instanceof Generated');
             }
 

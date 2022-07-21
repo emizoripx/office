@@ -1,6 +1,6 @@
 <?php
 
-namespace AnourValar\Office\Drivers;
+namespace EmizorIpx\OfficePhp74\Drivers;
 
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -26,7 +26,7 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
     /**
      * @var \PhpOffice\PhpSpreadsheet\Spreadsheet
      */
-    public readonly \PhpOffice\PhpSpreadsheet\Spreadsheet $spreadsheet;
+    public \PhpOffice\PhpSpreadsheet\Spreadsheet $spreadsheet;
 
     /**
      * @var int
@@ -43,7 +43,7 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\GridInterface::create()
+     * @see \EmizorIpx\OfficePhp74\Drivers\GridInterface::create()
      */
     public function create(): self
     {
@@ -56,9 +56,9 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\LoadInterface::load()
+     * @see \EmizorIpx\OfficePhp74\Drivers\LoadInterface::load()
      */
-    public function load(string $file, \AnourValar\Office\Format $format): self
+    public function load(string $file,  $format): self
     {
         $instance = new static;
         $instance->spreadsheet = IOFactory::createReader($instance->getFormat($format))->load($file);
@@ -69,9 +69,9 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\SaveInterface::save()
+     * @see \EmizorIpx\OfficePhp74\Drivers\SaveInterface::save()
      */
-    public function save(string $file, \AnourValar\Office\Format $format): void
+    public function save(string $file, $format): void
     {
         $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($this->spreadsheet, $this->getFormat($format));
 
@@ -90,7 +90,7 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\MultiSheetInterface::setSheet()
+     * @see \EmizorIpx\OfficePhp74\Drivers\MultiSheetInterface::setSheet()
      */
     public function setSheet(int $index): self
     {
@@ -101,7 +101,7 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\MultiSheetInterface::getSheetCount()
+     * @see \EmizorIpx\OfficePhp74\Drivers\MultiSheetInterface::getSheetCount()
      */
     public function getSheetCount(): int
     {
@@ -150,7 +150,7 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\SheetsInterface::setValues()
+     * @see \EmizorIpx\OfficePhp74\Drivers\SheetsInterface::setValues()
      */
     public function setValues(array $data, bool $autoCellFormat = true): self
     {
@@ -165,7 +165,7 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\GridInterface::setGrid()
+     * @see \EmizorIpx\OfficePhp74\Drivers\GridInterface::setGrid()
      */
     public function setGrid(iterable $data): self
     {
@@ -199,7 +199,7 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\SheetsInterface::getValues()
+     * @see \EmizorIpx\OfficePhp74\Drivers\SheetsInterface::getValues()
      */
     public function getValues(?string $ceilRange): array
     {
@@ -218,7 +218,7 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\SheetsInterface::getMergeCells()
+     * @see \EmizorIpx\OfficePhp74\Drivers\SheetsInterface::getMergeCells()
      */
     public function getMergeCells(): array
     {
@@ -227,7 +227,7 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\SheetsInterface::mergeCells()
+     * @see \EmizorIpx\OfficePhp74\Drivers\SheetsInterface::mergeCells()
      */
     public function mergeCells(string $ceilRange): self
     {
@@ -238,7 +238,7 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\SheetsInterface::copyStyle()
+     * @see \EmizorIpx\OfficePhp74\Drivers\SheetsInterface::copyStyle()
      */
     public function copyStyle(string $cellFrom, string $rangeTo): self
     {
@@ -249,7 +249,7 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\SheetsInterface::copyCellFormat()
+     * @see \EmizorIpx\OfficePhp74\Drivers\SheetsInterface::copyCellFormat()
      */
     public function copyCellFormat(string $cellFrom, string $rangeTo): self
     {
@@ -274,7 +274,7 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\SheetsInterface::addRow()
+     * @see \EmizorIpx\OfficePhp74\Drivers\SheetsInterface::addRow()
      */
     public function addRow(int $rowBefore, int $qty = 1): self
     {
@@ -285,7 +285,7 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\SheetsInterface::deleteRow()
+     * @see \EmizorIpx\OfficePhp74\Drivers\SheetsInterface::deleteRow()
      */
     public function deleteRow(int $row, int $qty = 1): self
     {
@@ -330,7 +330,7 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\SheetsInterface::copyWidth()
+     * @see \EmizorIpx\OfficePhp74\Drivers\SheetsInterface::copyWidth()
      */
     public function copyWidth(string $columnFrom, string $columnTo): self
     {
@@ -385,7 +385,7 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\MixInterface::setSheetTitle()
+     * @see \EmizorIpx\OfficePhp74\Drivers\MixInterface::setSheetTitle()
      */
     public function setSheetTitle(string $title): self
     {
@@ -396,7 +396,7 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\MixInterface::getSheetTitle()
+     * @see \EmizorIpx\OfficePhp74\Drivers\MixInterface::getSheetTitle()
      */
     public function getSheetTitle(): string
     {
@@ -405,9 +405,9 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
 
     /**
      * {@inheritDoc}
-     * @see \AnourValar\Office\Drivers\MixInterface::mergeDriver()
+     * @see \EmizorIpx\OfficePhp74\Drivers\MixInterface::mergeDriver()
      */
-    public function mergeDriver(\AnourValar\Office\Drivers\MixInterface $driver): self
+    public function mergeDriver(\EmizorIpx\OfficePhp74\Drivers\MixInterface $driver): self
     {
         $index = $driver->spreadsheet->getActiveSheetIndex();
         $this->spreadsheet->addExternalSheet($driver->sheet());
@@ -474,13 +474,11 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
         }
 
         if (isset($style['align'])) {
-            $align = match($style['align'])
-            {
-                \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT => 'left',
-                \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER => 'center',
-                \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT => 'right',
-            };
-
+            $align = match_data($style['align'], 
+            [\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT => 'left',
+            \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER => 'center',
+            \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT => 'right']);
+            \Log::debug("Align: ".  $align);
             $this
                 ->sheet()
                 ->getStyle($range)
@@ -488,12 +486,12 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
         }
 
         if (isset($style['valign'])) {
-            $valign = match($style['valign'])
-            {
+            $valign = match_data($style['valign'],
+            [
                 \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP => 'top',
                 \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER => 'center',
                 \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_BOTTOM => 'bottom',
-            };
+            ]);
 
             $this
                 ->sheet()
@@ -552,16 +550,16 @@ class PhpSpreadsheetDriver implements SheetsInterface, GridInterface, MixInterfa
     }
 
     /**
-     * @param \AnourValar\Office\Format $format
+     * @param \EmizorIpx\OfficePhp74\Format $format
      * @return string
      */
-    protected function getFormat(\AnourValar\Office\Format $format): string
+    protected function getFormat($format): string
     {
-        return match($format) {
-            \AnourValar\Office\Format::Xlsx => 'Xlsx',
-            \AnourValar\Office\Format::Pdf => 'Mpdf',
-            \AnourValar\Office\Format::Html => 'Html',
-            \AnourValar\Office\Format::Ods => 'Ods',
-        };
+        return match_data($format,  [
+            \EmizorIpx\OfficePhp74\Format::Xlsx => 'Xlsx',
+            \EmizorIpx\OfficePhp74\Format::Pdf => 'Mpdf',
+            \EmizorIpx\OfficePhp74\Format::Html => 'Html',
+            \EmizorIpx\OfficePhp74\Format::Ods => 'Ods',
+        ]);
     }
 }

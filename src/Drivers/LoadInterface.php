@@ -1,6 +1,6 @@
 <?php
 
-namespace AnourValar\Office\Drivers;
+namespace EmizorIpx\OfficePhp74\Drivers;
 
 interface LoadInterface
 {
@@ -8,8 +8,8 @@ interface LoadInterface
      * Load a template with specific format
      *
      * @param string $file
-     * @param \AnourValar\Office\Format $format
+     * @param \EmizorIpx\OfficePhp74\Format $format
      * @return self
      */
-    public function load(string $file, \AnourValar\Office\Format $format): self;
+    public function load(string $file, $format): self;
 }

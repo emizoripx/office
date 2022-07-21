@@ -1,6 +1,6 @@
 <?php
 
-namespace AnourValar\Office\Drivers;
+namespace EmizorIpx\OfficePhp74\Drivers;
 
 interface GridInterface extends SaveInterface
 {

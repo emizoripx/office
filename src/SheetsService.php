@@ -1,20 +1,20 @@
 <?php
 
-namespace AnourValar\Office;
+namespace EmizorIpx\OfficePhp74;
 
-use AnourValar\Office\Drivers\SheetsInterface;
+use EmizorIpx\OfficePhp74\Drivers\SheetsInterface;
 
 class SheetsService
 {
     /**
-     * @var \AnourValar\Office\Drivers\SheetsInterface
+     * @var \EmizorIpx\OfficePhp74\Drivers\SheetsInterface
      */
-    protected \AnourValar\Office\Drivers\SheetsInterface $driver;
+    protected \EmizorIpx\OfficePhp74\Drivers\SheetsInterface $driver;
 
     /**
-     * @var \AnourValar\Office\Sheets\Parser
+     * @var \EmizorIpx\OfficePhp74\Sheets\Parser
      */
-    protected \AnourValar\Office\Sheets\Parser $parser;
+    protected \EmizorIpx\OfficePhp74\Sheets\Parser $parser;
 
     /**
      * Handle template's loading
@@ -45,14 +45,11 @@ class SheetsService
     protected ?\Closure $hookAfter = null;
 
     /**
-     * @param \AnourValar\Office\Drivers\SheetsInterface $driver
-     * @param \AnourValar\Office\Sheets\Parser $parser
+     * @param \EmizorIpx\OfficePhp74\Drivers\SheetsInterface $driver
+     * @param \EmizorIpx\OfficePhp74\Sheets\Parser $parser
      * @return void
      */
-    public function __construct(
-        SheetsInterface $driver = new \AnourValar\Office\Drivers\PhpSpreadsheetDriver(),
-        \AnourValar\Office\Sheets\Parser $parser = new \AnourValar\Office\Sheets\Parser()
-    ) {
+    public function __construct( $driver , $parser ) {
         $this->driver = $driver;
         $this->parser = $parser;
     }
@@ -63,10 +60,10 @@ class SheetsService
      * @param string $templateFile
      * @param mixed $data
      * @param bool $autoCellFormat
-     * @return \AnourValar\Office\Generated
+     * @return \EmizorIpx\OfficePhp74\Generated
      */
-    public function generate(string $templateFile, mixed $data, bool $autoCellFormat = false): Generated
-    {
+    public function generate(string $templateFile, $data, bool $autoCellFormat = false): Generated
+    {   
         // Handle with input data
         $data = $this->parser->canonizeData($data);
 
@@ -154,7 +151,7 @@ class SheetsService
     }
 
     /**
-     * @param \AnourValar\Office\Drivers\SheetsInterface $driver
+     * @param \EmizorIpx\OfficePhp74\Drivers\SheetsInterface $driver
      * @param array $data
      * @param int $sheetIndex
      * @throws \LogicException
@@ -204,7 +201,7 @@ class SheetsService
 
     /**
      * @param array $data
-     * @param \AnourValar\Office\Drivers\SheetsInterface $driver
+     * @param \EmizorIpx\OfficePhp74\Drivers\SheetsInterface $driver
      * @param int $sheetIndex
      * @return array
      */
@@ -221,7 +218,6 @@ class SheetsService
                     // Hook: value
                     $value = ($this->hookValue)($driver, $column.$row, $value, $sheetIndex);
                 }
-
                 if (!$isNull && is_null($value)) {
                     unset($data[$row][$column]);
                 }

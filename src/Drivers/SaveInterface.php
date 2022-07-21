@@ -1,6 +1,6 @@
 <?php
 
-namespace AnourValar\Office\Drivers;
+namespace EmizorIpx\OfficePhp74\Drivers;
 
 interface SaveInterface
 {
@@ -8,8 +8,8 @@ interface SaveInterface
      * Save in specific format
      *
      * @param string $file
-     * @param \AnourValar\Office\Format $format
+     * @param \EmizorIpx\OfficePhp74\Format $format
      * @return void
      */
-    public function save(string $file, \AnourValar\Office\Format $format): void;
+    public function save(string $file, $format): void;
 }

@@ -1,3 +1,4 @@
+> Clone of https://github.com/AnourValar/office for internal compatibility with PHP7.4
 # Office: Documents | Reports | Grids
 
 ## Installation
@@ -57,21 +58,21 @@ $data = [
 ];
 
 // Save as XLSX (Excel)
-(new \AnourValar\Office\SheetsService())
+(new \EmizorIpx\OfficePhp74\SheetsService())
     ->generate(
         'template1.xlsx', // path to template
         $data // input data
     )
     ->saveAs(
         'generated_document.xlsx', // path to save
-        \AnourValar\Office\Format::Xlsx // save format
+        \EmizorIpx\OfficePhp74\Format::Xlsx // save format
     );
 
 // Available formats:
-// \AnourValar\Office\Format::Xlsx
-// \AnourValar\Office\Format::Pdf
-// \AnourValar\Office\Format::Html
-// \AnourValar\Office\Format::Ods
+// \EmizorIpx\OfficePhp74\Format::Xlsx
+// \EmizorIpx\OfficePhp74\Format::Pdf
+// \EmizorIpx\OfficePhp74\Format::Html
+// \EmizorIpx\OfficePhp74\Format::Ods
 ```
 
 **generated_document.xlsx:**
@@ -116,7 +117,7 @@ $data = [
 ];
 
 // Save as XLSX (Excel)
-(new \AnourValar\Office\SheetsService())
+(new \EmizorIpx\OfficePhp74\SheetsService())
     ->generate('template2.xlsx', $data)
     ->saveAs('generated_document.xlsx'); // second argument (format) is optional
 ```
@@ -135,13 +136,13 @@ $data = [
 $data = [
     'foo' => 'Hello',
 
-    'bar' => function (\AnourValar\Office\Drivers\SheetsInterface $driver, $cell) {
+    'bar' => function (\EmizorIpx\OfficePhp74\Drivers\SheetsInterface $driver, $cell) {
         $driver->insertImage('logo.png', $cell, ['width' => 100, 'offset_y' => -45]);
         return 'Logo!'; // replace marker "[bar]" with return value
     }
 ];
 
-(new \AnourValar\Office\SheetsService())
+(new \EmizorIpx\OfficePhp74\SheetsService())
     ->hookValue(function (SheetsInterface $driver, $cell, $value, int $sheetIndex) {
         // Hook will be called for every cell which is changing
 
@@ -186,7 +187,7 @@ $data = [
     ],
 ];
 
-(new \AnourValar\Office\SheetsService())
+(new \EmizorIpx\OfficePhp74\SheetsService())
     ->hookLoad(function ($driver, string $templateFile, $templateFormat)
     {
         // create empty document instead of using existing
@@ -229,10 +230,10 @@ $data = [
 $dataA = ['foo' => 'hello'];
 $dataB = ['foo' => 'world'];
 
-$documentA = (new \AnourValar\Office\SheetsService())->generate('template.xlsx', $dataA);
-$documentB = (new \AnourValar\Office\SheetsService())->generate('template.xlsx', $dataB);
+$documentA = (new \EmizorIpx\OfficePhp74\SheetsService())->generate('template.xlsx', $dataA);
+$documentB = (new \EmizorIpx\OfficePhp74\SheetsService())->generate('template.xlsx', $dataB);
 
-$mixer = new \AnourValar\Office\Mixer();
+$mixer = new \EmizorIpx\OfficePhp74\Mixer();
 $mixer($documentA, $documentB)->saveAs('generated_document.xlsx');
 ```
 
@@ -248,7 +249,7 @@ $data = [
 ];
 
 // Save as XLSX (Excel)
-(new \AnourValar\Office\GridService())
+(new \EmizorIpx\OfficePhp74\GridService())
     ->generate(
         ['Name', 'Sales'], // headers
         $data // data
@@ -275,7 +276,7 @@ $data = function () {
 };
 
 // Save as XLSX (Excel)
-(new \AnourValar\Office\GridService())
+(new \EmizorIpx\OfficePhp74\GridService())
     ->hookHeader(function (GridInterface $driver, mixed $header, $key, $column)
     {
         if (isset($header['width'])) {

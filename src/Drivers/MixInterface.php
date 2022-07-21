@@ -1,6 +1,6 @@
 <?php
 
-namespace AnourValar\Office\Drivers;
+namespace EmizorIpx\OfficePhp74\Drivers;
 
 interface MixInterface extends MultiSheetInterface
 {
@@ -22,8 +22,8 @@ interface MixInterface extends MultiSheetInterface
     /**
      * Merge (union) a sheet from another instanceof of driver
      *
-     * @param \AnourValar\Office\Drivers\MixInterface $driver
+     * @param \EmizorIpx\OfficePhp74\Drivers\MixInterface $driver
      * @return self
      */
-    public function mergeDriver(\AnourValar\Office\Drivers\MixInterface $driver): self;
+    public function mergeDriver(\EmizorIpx\OfficePhp74\Drivers\MixInterface $driver): self;
 }

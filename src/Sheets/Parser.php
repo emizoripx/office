@@ -1,6 +1,6 @@
 <?php
 
-namespace AnourValar\Office\Sheets;
+namespace EmizorIpx\OfficePhp74\Sheets;
 
 class Parser
 {
@@ -10,7 +10,7 @@ class Parser
      * @param mixed $data
      * @return array
      */
-    public function canonizeData(mixed $data): array
+    public function canonizeData($data): array
     {
         if (is_object($data) && method_exists($data, 'toArray')) {
             $data = $data->toArray();
@@ -25,7 +25,7 @@ class Parser
      * @param array $values
      * @param array $data
      * @param array $mergeCells
-     * @return \AnourValar\Office\Sheets\SchemaMapper
+     * @return \EmizorIpx\OfficePhp74\Sheets\SchemaMapper
      */
     public function schema(array $values, array $data, array $mergeCells): SchemaMapper
     {
@@ -164,7 +164,7 @@ class Parser
      * @param array $values
      * @param array $data
      * @param array $mergeCells
-     * @param \AnourValar\Office\Sheets\SchemaMapper $schema
+     * @param \EmizorIpx\OfficePhp74\Sheets\SchemaMapper $schema
      * @return array
      */
     protected function calculateDataSchema(array &$values, array &$data, array &$mergeCells, SchemaMapper &$schema): array
@@ -383,7 +383,7 @@ class Parser
 
     /**
      * @param array $values
-     * @param \AnourValar\Office\Sheets\SchemaMapper $schema
+     * @param \EmizorIpx\OfficePhp74\Sheets\SchemaMapper $schema
      * @param array $mergeCells
      * @return void
      */
@@ -519,7 +519,7 @@ class Parser
     /**
      * @param array $dataSchema
      * @param array $data
-     * @param \AnourValar\Office\Sheets\SchemaMapper $schema
+     * @param \EmizorIpx\OfficePhp74\Sheets\SchemaMapper $schema
      * @return void
      */
     protected function replaceMarkers(array &$dataSchema, array &$data, SchemaMapper &$schema): void
@@ -739,7 +739,7 @@ class Parser
      * @throws \LogicException
      * @return mixed
      */
-    private function replace(string $from, mixed $to, $value): mixed
+    private function replace(string $from, $to, $value)
     {
         if (! is_string($value)) {
             return $value;
